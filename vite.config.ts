@@ -7,18 +7,18 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue({ template: { transformAssetUrls } }), vueDevTools(), quasar()],
-  css: {
-    postcss: './postcss.config.js',
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@/style/quasar.variables.scss";`,
-      },
+    plugins: [vue({ template: { transformAssetUrls } }), vueDevTools(), quasar()],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                // 如果需要导入全局变量或样式文件
+                additionalData: `@import "@/style/quasar.variables.scss";`,
+            },
+        },
     },
-  },
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    resolve: {
+        alias: {
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
+        },
     },
-  },
 })
