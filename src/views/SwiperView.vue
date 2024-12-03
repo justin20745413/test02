@@ -1,42 +1,48 @@
 <template>
-    <div class="box">
-        <div class="swiper-container">
-            <!-- Swiper -->
-            <swiper
-                ref="mySwiper"
-                :modules="swiperModules"
-                :slides-per-view="3"
-                :space-between="30"
-                :centered-slides="true"
-                :loop="true"
-                :pagination="{
-                    clickable: true,
-                    type: 'bullets', // 確保這裡是 'bullets'
-                    el: '.swiper-pagination',
-                }"
-                :navigation="{
-                    nextEl: '.next-button',
-                    prevEl: '.prev-button',
-                }"
-                @swiper="onSwiper"
-                @slideChange="onSlideChange"
-                class="w-full custom-swiper"
-            >
-                <swiper-slide
-                    v-for="(img, index) in images"
-                    :key="index"
-                    class="swiper-slide-custom"
+    <div>
+        <div class="box mt-10">
+            <div class="swiper-container">
+                <!-- Swiper -->
+                <swiper
+                    ref="mySwiper"
+                    :modules="swiperModules"
+                    :slides-per-view="3"
+                    :space-between="30"
+                    :centered-slides="true"
+                    :loop="true"
+                    :pagination="{
+                        clickable: true,
+                        type: 'bullets', // 確保這裡是 'bullets'
+                        el: '.swiper-pagination',
+                    }"
+                    :navigation="{
+                        nextEl: '.next-button',
+                        prevEl: '.prev-button',
+                    }"
+                    @swiper="onSwiper"
+                    @slideChange="onSlideChange"
+                    class="w-full custom-swiper"
                 >
-                    <q-img :src="img" alt="Slide Image" class="swiper-img"></q-img>
-                </swiper-slide>
-            </swiper>
+                    <swiper-slide
+                        v-for="(img, index) in images"
+                        :key="index"
+                        class="swiper-slide-custom"
+                    >
+                        <q-img :src="img" alt="Slide Image" class="swiper-img"></q-img>
+                    </swiper-slide>
+                </swiper>
 
-            <!-- 自訂義左右導航按鈕 -->
-            <button @click="goPrev" class="custom-nav-button prev-button">prev</button>
-            <button @click="goNext" class="custom-nav-button next-button">next</button>
+                <!-- 自訂義左右導航按鈕 -->
+                <button @click="goPrev" class="custom-nav-button prev-button">
+                    <q-icon name="keyboard_double_arrow_left"></q-icon>
+                </button>
+                <button @click="goNext" class="custom-nav-button next-button">
+                    <q-icon name="keyboard_double_arrow_right"></q-icon>
+                </button>
 
-            <!-- 自訂義分頁 -->
-            <div class="swiper-pagination"></div>
+                <!-- 自訂義分頁 -->
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -85,22 +91,20 @@ const goPrev = () => {
 .box {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: #5fa1e2;
+    width: 980px;
 }
 
 .swiper-container {
     position: relative;
-    width: 80%;
-    height: auto;
+    width: 100%;
+    max-width: 80%;
 }
 
 .custom-swiper {
     width: 100%;
-    height: auto;
+    max-width: 100%;
     position: relative;
+    box-sizing: border-box;
 }
 
 .swiper-slide-custom {
@@ -138,8 +142,8 @@ const goPrev = () => {
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    background-color: yellow;
-    color: red;
+    opacity: 0.6;
+    background-color: #0051f3;
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -157,24 +161,24 @@ const goPrev = () => {
 }
 
 .prev-button {
-    left: -60px; /* 左邊距離 */
+    left: -60px;
 }
 
 .next-button {
-    right: -60px; /* 右邊距離 */
+    right: -60px;
 }
 
 /* 自訂義分頁按鈕樣式 */
 ::v-deep(.swiper-pagination) {
     text-align: center;
-    bottom: -20px;
+    bottom: -30px;
 }
 
 ::v-deep(.swiper-pagination .swiper-pagination-bullet) {
-    background-color: yellow !important;
+    background-color: #0051f3 !important;
 }
 
 ::v-deep(.swiper-pagination .swiper-pagination-bullet-active) {
-    background-color: red !important;
+    background-color: orange !important;
 }
 </style>

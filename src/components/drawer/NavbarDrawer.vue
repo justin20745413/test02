@@ -1,5 +1,5 @@
 <template>
-    <q-drawer v-model="drawerOpen" side="left" bordered class="fit">
+    <q-drawer v-model="drawerOpen" side="left" bordered overlay class="fit">
         <q-list>
             <q-item clickable v-ripple @click="navigateTo('')">
                 <q-item-section avatar>
@@ -7,15 +7,15 @@
                 </q-item-section>
                 <q-item-section class="custom-text-color">Home</q-item-section>
             </q-item>
-            <q-item clickable v-ripple @click="navigateTo('about')">
+            <q-item clickable v-ripple @click="navigateTo('chart')">
                 <q-item-section avatar>
                     <q-icon color="black" name="info" />
                 </q-item-section>
-                <q-item-section class="custom-text-color">About</q-item-section>
+                <q-item-section class="custom-text-color">Echart</q-item-section>
             </q-item>
             <q-item clickable v-ripple @click="navigateTo('swiper')">
                 <q-item-section avatar>
-                    <q-icon color="black" name="mail" />
+                    <q-icon color="black" name="image" />
                 </q-item-section>
                 <q-item-section class="custom-text-color">Swiper</q-item-section>
             </q-item>

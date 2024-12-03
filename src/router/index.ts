@@ -22,14 +22,14 @@ const routes = [
         ],
     },
     {
-        path: '/about',
-        name: 'about',
+        path: '/chart',
+        name: 'chart',
         meta: { requiresAuth: true },
         children: [
             {
                 path: '',
-                name: 'about-view',
-                component: () => import('@/views/AboutView.vue'),
+                name: 'chart-view',
+                component: () => import('@/views/ChartView.vue'),
             },
         ],
     },
