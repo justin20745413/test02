@@ -92,8 +92,8 @@
                     </swiper>
                 </swiper-slide>
 
-                <swiper-slide class="mt-72">Horizontal Slide 3</swiper-slide>
-                <swiper-slide class="mt-72">Horizontal Slide 4</swiper-slide>
+                <swiper-slide class="mt-72">Horizontal Slide 3xxx</swiper-slide>
+                <swiper-slide class="mt-72">Horizontal Slide 4xxx</swiper-slide>
 
                 <div class="navigation-wrapper-main">
                     <button class="nav-button-main prev-button swiper-button-prev-main"></button>
