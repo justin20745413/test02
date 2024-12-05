@@ -8,8 +8,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AuthCode: typeof import('./components/AuthCode.vue')['default']
-    copy: typeof import('./components/Swiper/SwiperThree.vue')['default']
+    LoginView: typeof import('./components/Login/LoginView.vue')['default']
     NavbarDrawer: typeof import('./components/drawer/NavbarDrawer.vue')['default']
+    RegisterView: typeof import('./components/Login/RegisterView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SwiperOne: typeof import('./components/Swiper/SwiperOne.vue')['default']

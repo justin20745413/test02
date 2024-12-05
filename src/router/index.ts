@@ -1,14 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { isAuthenticated } from '@/utils/auth'
 import type { App } from 'vue'
 import ExampleView from '@/views/ExampleView.vue'
 
 const routes = [
     {
-        path: '/login',
-        name: 'login',
-        component: () => import('@/views/LoginView.vue'),
+        path: '/auth',
+        component: () => import('@/views/LogView.vue'),
         meta: { requiresAuth: false },
+        children: [
+            {
+                path: 'login',
+                name: 'login',
+                component: () => import('@/components/Login/LoginView.vue'),
+            },
+            {
+                path: 'register',
+                name: 'register',
+                component: () => import('@/components/Login/RegisterView.vue'),
+            },
+        ],
     },
     {
         path: '/',
@@ -55,18 +65,6 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
-})
-
-router.beforeEach((to, from, next) => {
-    const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
-
-    if (requiresAuth && !isAuthenticated()) {
-        next('/login')
-    } else if (to.path === '/login' && isAuthenticated()) {
-        next('/')
-    } else {
-        next()
-    }
 })
 
 export function setupRouter(app: App) {

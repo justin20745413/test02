@@ -1,8 +1,5 @@
-export const isAuthenticated = (): boolean => {
-    return !!localStorage.getItem('token')
-}
-
 export const logout = (): void => {
     localStorage.removeItem('token')
-    window.location.href = '/login'
+    localStorage.removeItem('sessionStartTime')
+    window.location.replace('/auth/login')
 }

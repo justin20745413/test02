@@ -1,37 +1,47 @@
 <template>
-    <q-drawer v-model="drawerOpen" side="left" bordered overlay class="fit">
+    <q-drawer v-model="drawerOpen" side="left" bordered overlay :class="{ 'body--dark': isDark }">
         <q-list>
             <q-item clickable v-ripple @click="navigateTo('')">
                 <q-item-section avatar>
-                    <q-icon color="black" name="home" />
+                    <q-icon :color="isDark ? 'white' : 'black'" name="home" />
                 </q-item-section>
-                <q-item-section class="custom-text-color">Home</q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">Home</q-item-section>
             </q-item>
             <q-item clickable v-ripple @click="navigateTo('chart')">
                 <q-item-section avatar>
-                    <q-icon color="black" name="info" />
+                    <q-icon :color="isDark ? 'white' : 'black'" name="info" />
                 </q-item-section>
-                <q-item-section class="custom-text-color">Echart</q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">Echart</q-item-section>
             </q-item>
             <q-item clickable v-ripple @click="navigateTo('swiper')">
                 <q-item-section avatar>
-                    <q-icon color="black" name="image" />
+                    <q-icon :color="isDark ? 'white' : 'black'" name="image" />
                 </q-item-section>
-                <q-item-section class="custom-text-color">Swiper</q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">Swiper</q-item-section>
             </q-item>
             <q-item clickable v-ripple @click="navigateTo('example')">
                 <q-item-section avatar>
-                    <q-icon color="black" name="mail" />
+                    <q-icon :color="isDark ? 'white' : 'black'" name="mail" />
                 </q-item-section>
-                <q-item-section class="custom-text-color">開發範例</q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">開發範例</q-item-section>
+            </q-item>
+            <q-separator />
+            <q-item clickable v-ripple @click="handleLogout">
+                <q-item-section avatar>
+                    <q-icon :color="isDark ? 'white' : 'black'" name="logout" />
+                </q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">登出</q-item-section>
             </q-item>
         </q-list>
     </q-drawer>
 </template>
 
 <script lang="ts" setup>
-import { computed, defineProps } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { logout } from '@/utils/auth'
+import { Dark } from 'quasar'
+
 const props = defineProps({
     modelValue: {
         type: Boolean,
@@ -40,6 +50,12 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue'])
+const isDark = ref(Dark.isActive)
+
+// 監聽暗色模式變化
+watch(() => Dark.isActive, (val) => {
+    isDark.value = val
+})
 
 const drawerOpen = computed({
     get: () => props.modelValue,
@@ -53,9 +69,26 @@ const navigateTo = (route: string) => {
         emit('update:modelValue', false)
     })
 }
+
+const handleLogout = () => {
+    logout()
+}
 </script>
 
 <style scoped>
+.q-drawer {
+    background: var(--header-bg);
+}
+
+.body--dark {
+    background: var(--header-bg);
+    color: white;
+}
+
+.dark-text {
+    color: white !important;
+}
+
 .custom-text-color {
     color: black;
 }

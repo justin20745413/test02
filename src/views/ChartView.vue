@@ -5,6 +5,8 @@
                 v-for="(chart, index) in chartIds"
                 :key="chart"
                 :class="{ active: currentIndex === index }"
+                :color="isDark ? 'grey-8' : 'grey-3'"
+                :text-color="isDark ? 'white' : 'black'"
                 @click="switchChart(index)"
             >
                 {{ chartTitles[index] }}
@@ -21,14 +23,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import * as echarts from 'echarts'
+import { Dark } from 'quasar'
 
 const currentIndex = ref(0)
 const myCharts = ref<echarts.ECharts[]>([])
+const isDark = ref(Dark.isActive)
 
 const chartIds = ['chart-bar', 'chart-line', 'chart-pie', 'chart-radar', 'chart-scatter']
-const chartTitles = ['柱狀圖', '折線圖', '餅圖', '雷達圖', '散點圖']
+const chartTitles = ['柱狀圖', '折線圖', '圓餅圖', '雷達圖', '散點圖']
+
+// 監聽暗色模式變化
+watch(
+    () => Dark.isActive,
+    (val) => {
+        isDark.value = val
+        myCharts.value.forEach((chart, index) => {
+            if (chart) {
+                chart.dispose()
+            }
+            initChart(index)
+        })
+    },
+)
+
+const getChartTheme = () => {
+    return isDark.value
+        ? {
+              backgroundColor: 'transparent',
+              textStyle: { color: '#ffffff' },
+              title: { textStyle: { color: '#ffffff' } },
+              xAxis: { axisLine: { lineStyle: { color: '#ffffff' } } },
+              yAxis: { axisLine: { lineStyle: { color: '#ffffff' } } },
+          }
+        : {}
+}
 
 const chartOptions = [
     {
@@ -45,6 +75,8 @@ const chartOptions = [
     },
     {
         title: { text: 'Pie' },
+        xAxis: { show: false },
+        yAxis: { show: false },
         series: [
             {
                 type: 'pie',
@@ -56,11 +88,16 @@ const chartOptions = [
                     { name: 'D', value: 10 },
                     { name: 'E', value: 10 },
                 ],
+                label: {
+                    color: isDark.value ? '#ffffff' : '#000000'
+                }
             },
         ],
     },
     {
         title: { text: 'Radar' },
+        xAxis: { show: false },
+        yAxis: { show: false },
         radar: {
             indicator: [
                 { name: 'A', max: 50 },
@@ -69,6 +106,9 @@ const chartOptions = [
                 { name: 'D', max: 50 },
                 { name: 'E', max: 50 },
             ],
+            axisName: {
+                color: isDark.value ? '#ffffff' : '#000000'
+            }
         },
         series: [
             {
@@ -94,13 +134,13 @@ const initChart = (index: number) => {
     const chartDom = document.getElementById(chartIds[index])
     if (!chartDom) return
 
-    // 如果已經存在則銷毀
     if (myCharts.value[index]) {
         myCharts.value[index].dispose()
     }
 
     const chart = echarts.init(chartDom)
-    chart.setOption(chartOptions[index])
+    const theme = getChartTheme()
+    chart.setOption({ ...chartOptions[index], ...theme })
     myCharts.value[index] = chart
 }
 
@@ -121,7 +161,6 @@ const handleResize = () => {
 }
 
 onMounted(() => {
-    // 初始化第一個圖表
     setTimeout(() => {
         initChart(0)
     }, 0)
@@ -130,7 +169,6 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-    // 清理圖表實例
     myCharts.value.forEach((chart) => {
         if (chart) {
             chart.dispose()
@@ -154,20 +192,9 @@ onBeforeUnmount(() => {
     gap: 10px;
 }
 
-.tabs button {
-    padding: 8px 16px;
-    border: none;
-    background: #eee;
-    cursor: pointer;
-}
-
-.tabs button.active {
-    background: #666;
-    color: white;
-}
-
 .chart {
     width: 100%;
     height: 400px;
+    background: transparent;
 }
 </style>

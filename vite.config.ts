@@ -15,18 +15,18 @@ export default defineConfig({
         vueDevTools(),
         quasar(),
         AutoImport({
-            imports: ['vue', 'vue-router'], // 自动导入 Vue 的 API，如 ref, reactive
-            dts: 'src/auto-imports.d.ts', // 生成的自动导入类型声明文件
+            imports: ['vue', 'vue-router'],
+            dts: 'src/auto-imports.d.ts',
         }),
         Components({
-            resolvers: [QuasarResolver()], // 自动导入 Quasar 和其他组件
-            dts: 'src/components.d.ts', // 生成的自动引入类型声明文件
+            resolvers: [QuasarResolver()],
+            dts: 'src/components.d.ts',
         }),
     ],
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData: `@import "@/style/quasar.variables.scss";`,
+                additionalData: `@import "@/style/quasar.variables.scss";@import "@/style/dark-mode.scss";`,
             },
         },
     },

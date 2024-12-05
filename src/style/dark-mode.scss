@@ -1,0 +1,73 @@
+body.body--dark {
+    // 深色模式的主色系（紫色系）
+    --q-primary: #9c27b0;
+    --q-secondary: #ba68c8;
+    --q-accent: #e1bee7;
+
+    // 深色模式背景和文字顏色
+    --q-dark: #121212;
+    --q-dark-page: #1d1d1d;
+
+    // 深色模式按鈕顏色
+    .q-btn {
+        &--primary {
+            background: #9c27b0;
+            &:hover {
+                background: #7b1fa2;
+            }
+        }
+
+        &--secondary {
+            background: #ba68c8;
+            &:hover {
+                background: #ab47bc;
+            }
+        }
+
+        &--accent {
+            background: #e1bee7;
+            color: #121212;
+            &:hover {
+                background: #ce93d8;
+            }
+        }
+
+        // 修改這裡的顏色以確保按鈕顏色不同
+        &--success {
+            background: #4caf50; // 新增成功按鈕顏色
+            &:hover {
+                background: #388e3c;
+            }
+        }
+
+        &--error {
+            background: #f44336; // 新增錯誤按鈕顏色
+            &:hover {
+                background: #d32f2f;
+            }
+        }
+
+        // 一般按鈕樣式
+        &--standard {
+            background: #424242;
+            color: #ffffff;
+            &:hover {
+                background: #616161;
+            }
+        }
+
+        // 文字按鈕樣式
+        &--flat,
+        &--outline {
+            color: #e1bee7;
+            &:hover {
+                background: rgba(225, 190, 231, 0.12);
+            }
+        }
+    }
+
+    --q-positive: #21ba45;
+    --q-negative: #c10015;
+    --q-info: #31ccec;
+    --q-warning: #f2c037;
+}

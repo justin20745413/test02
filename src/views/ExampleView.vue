@@ -1,21 +1,26 @@
 <template>
     <div class="example-container">
-        <div class="button-group gap-3">
-            <q-btn outline color="warning" label="Outline Button 1" />
-            <q-btn outline color="secondary" label="Outline Button 2" />
-            <q-btn outline color="accent" label="Outline Button 3" />
-            <q-btn outline color="positive" label="Outline Button 4" />
-            <q-btn outline color="negative" label="Outline Button 5" />
+        <div class="text-h6 q-mb-md">主要按鈕</div>
+        <div class="button-group">
+            <q-btn color="primary" label="主要按鈕" />
+            <q-btn color="secondary" label="次要按鈕" />
+            <q-btn color="accent" label="強調按鈕" />
         </div>
-        <div class="button-group gap-3">
-            <q-btn color="warning" label="Filled Button 1" />
-            <q-btn color="secondary" label="Filled Button 2" />
-            <q-btn color="accent" label="Filled Button 3" />
-            <q-btn color="positive" label="Filled Button 4" />
-            <q-btn color="negative" label="Filled Button 5" />
+
+        <div class="text-h6 q-mb-md">功能按鈕</div>
+        <div class="button-group">
+            <q-btn color="info" label="信息" />
+            <q-btn color="warning" label="警告" />
+            <q-btn color="bg-success-custom" class="bg-success-custom" label="成功" />
+            <q-btn color="error" class="bg-error-custom" label="錯誤" />
         </div>
-        <q-btn color="primary" label="Open Fullscreen Dialog" class="q-mt-md" />
-        <q-btn color="secondary" label="Open Centered Dialog" class="q-mt-md" />
+
+        <div class="text-h6 q-mb-md">輪廓按鈕</div>
+        <div class="button-group">
+            <q-btn outline color="primary" label="主要" />
+            <q-btn outline color="secondary" label="次要" />
+            <q-btn outline color="accent" label="強調" />
+        </div>
     </div>
 </template>
 
@@ -33,5 +38,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 </style>

@@ -1,66 +1,19 @@
-// 主要品牌顏色
-$primary: #ffc759;
-$secondary: #babfd1;
-$secondary1: #607196;
-$secondary2: #e8e9ed;
-$button: #5187ce;
-$midd: #93afb8;
+// 明亮模式的主色系（藍綠色系）
+$primary: #00838f;
+$secondary: #26a69a;
+$accent: #80deea;
 
-// 狀態顏色
-$warning: #d97706;
-$positive: #4bba7e;
-$negative: #ff5252;
-$info: #3f9bf0;
-$accent: #23548e;
+$dark: #1d1d1d;
+$dark-page: #121212;
 
-// 深色主題
-$dark: #0f3e50;
-$dark-page: #01161e;
-$darkest: #01161e;
+$positive: #21ba45;
+$negative: #c10015;
+$info: #31ccec;
+$warning: #f2c037;
 
-// 標準主題
-$normal: #19191b;
-$light: #f5f8ff;
-$active-light: #f5f8ff;
-$lightest: #ffffff;
-
-// 衍生顏色
-$primary-light: #dff3ee;
-$warning-light: #fef3c7;
-$negative-light: #fee2e2;
-$blue-light: #e0f2fe;
-
-// 線條顏色
-$line: #e1e6ea;
-
-// 灰階
-$grey100: #f7f9fc;
-$grey200: #edf0f7;
-$grey300: #e2e7f0;
-$grey400: #cbd2e0;
-$grey500: #a0abc0;
-$grey600: #717d96;
-$grey700: #4a5468;
-$grey800: #2d3648;
-
-// 網站特定顏色
-$webColorA: #bea99e;
-$webColorB: #3b5d6d;
-$webColorC: #b9bcc8;
-
-// CSS 變量（支援淺色/深色模式）
+$light-bg: #ffffff;
+$light-text: #2c3e50;
 :root {
-    --q-primary: #{$primary};
-    --q-secondary: #{$secondary};
-    --q-midd: #{$midd};
+    --q-color-success: red;
+    --q-color-error: yellow;
 }
-
-.body--light {
-    --q-midd: #{$midd};
-}
-
-.body--dark {
-    --q-midd: #{$midd};
-}
-
-$z-index-dialog: 2000 !default;

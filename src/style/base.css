@@ -17,13 +17,26 @@ body {
     background: linear-gradient(270deg, #e2cdd6, #dff18c, #8fd3f4, #84fab0);
     background-size: 400% 400%;
     animation: backgroundAnimation 10s ease infinite;
-
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
+
+/* 登入註冊頁面不需要滾動 */
+body.auth-page {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 可滾動內容的容器 */
+.scrollable-content {
+    max-height: 100vh;
+    overflow-y: auto;
+    width: 100%;
+}
+
 body::before {
     content: '';
     position: absolute;
