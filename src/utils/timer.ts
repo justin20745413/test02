@@ -1,9 +1,9 @@
 import { ref } from 'vue'
 import type { TimerState } from '@/types/auth'
-import { logout } from './auth'
 import { useQuasar } from 'quasar'
+import { logout } from './auth'
 
-const TIMEOUT_DURATION = 600000
+const TIMEOUT_DURATION = 6000000
 const timerState = ref<TimerState>({
     remainingTime: '10:00',
     timer: undefined,
@@ -21,7 +21,7 @@ export const useTimer = () => {
             return
         }
 
-        const timeLeft = 600 - Math.floor((Date.now() - parseInt(sessionStartTime)) / 1000)
+        const timeLeft = 6000000 - Math.floor((Date.now() - parseInt(sessionStartTime)) / 1000)
         if (timeLeft <= 0) {
             handleLogout()
             return
@@ -58,7 +58,7 @@ export const useTimer = () => {
     const showTimeoutDialog = () => {
         $q.dialog({
             title: '繼續使用',
-            message: '您已經閒置10分鐘，是否繼續使用？',
+            message: '您已經閒置1分鐘，是否繼續使用？',
             ok: {
                 label: '是',
                 color: 'primary',
@@ -70,7 +70,9 @@ export const useTimer = () => {
             cancel: {
                 label: '否',
                 color: 'secondary',
-                handler: () => handleLogout(),
+                handler: () => {
+                    handleLogout()
+                },
             },
         })
     }

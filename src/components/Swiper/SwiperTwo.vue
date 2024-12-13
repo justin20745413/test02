@@ -32,12 +32,12 @@
                 </swiper>
 
                 <!-- 自訂義左右導航按鈕 -->
-                <button @click="goPrev" class="custom-nav-button prev-button">
-                    <q-icon name="keyboard_double_arrow_left"></q-icon>
-                </button>
-                <button @click="goNext" class="custom-nav-button next-button-2">
+                <q-btn @click="goPrev" class="custom-nav-button prev-button">
+                    <q-icon name="keyboard_double_arrow_left" color="primary"></q-icon>
+                </q-btn>
+                <q-btn @click="goNext" class="custom-nav-button next-button-2">
                     <q-icon name="keyboard_double_arrow_right"></q-icon>
-                </button>
+                </q-btn>
 
                 <!-- 自訂義分頁 -->
                 <div class="swiper-pagination-2"></div>

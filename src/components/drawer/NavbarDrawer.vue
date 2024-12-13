@@ -19,13 +19,26 @@
                 </q-item-section>
                 <q-item-section :class="{ 'dark-text': isDark }">Swiper</q-item-section>
             </q-item>
-            <q-item clickable v-ripple @click="navigateTo('example')">
+            <q-item clickable v-ripple @click="navigateTo('product')">
                 <q-item-section avatar>
                     <q-icon :color="isDark ? 'white' : 'black'" name="mail" />
                 </q-item-section>
-                <q-item-section :class="{ 'dark-text': isDark }">開發範例</q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">Product</q-item-section>
             </q-item>
-            <q-separator />
+            <q-item clickable v-ripple @click="navigateTo('bg')">
+                <q-item-section avatar>
+                    <q-icon :color="isDark ? 'white' : 'black'" name="image" />
+                </q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">BG</q-item-section>
+            </q-item>
+            <q-separator inset /><!-- 線可加 -->
+            <q-item clickable v-ripple @click="navigateTo('qcard')">
+                <q-item-section avatar>
+                    <q-icon :color="isDark ? 'white' : 'black'" name="card_giftcard" />
+                </q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">Qcard</q-item-section>
+            </q-item>
+            <q-separator /><!-- 線可加inset -->
             <q-item clickable v-ripple @click="handleLogout">
                 <q-item-section avatar>
                     <q-icon :color="isDark ? 'white' : 'black'" name="logout" />
@@ -53,9 +66,12 @@ const emit = defineEmits(['update:modelValue'])
 const isDark = ref(Dark.isActive)
 
 // 監聽暗色模式變化
-watch(() => Dark.isActive, (val) => {
-    isDark.value = val
-})
+watch(
+    () => Dark.isActive,
+    (val) => {
+        isDark.value = val
+    },
+)
 
 const drawerOpen = computed({
     get: () => props.modelValue,

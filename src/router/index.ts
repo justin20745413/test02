@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { App } from 'vue'
-import ExampleView from '@/views/ExampleView.vue'
+import ProductView from '@/views/ProductView.vue'
+import BgView from '@/views/BgView.vue'
+import QcardView from '@/views/QcardView.vue'
 
 const routes = [
     {
@@ -56,9 +58,19 @@ const routes = [
         ],
     },
     {
-        path: '/example',
-        name: 'Example',
-        component: ExampleView,
+        path: '/product',
+        name: 'product',
+        component: ProductView,
+    },
+    {
+        path: '/bg',
+        name: 'bg',
+        component: BgView,
+    },
+    {
+        path: '/qcard',
+        name: 'qcard',
+        component: QcardView,
     },
 ]
 
