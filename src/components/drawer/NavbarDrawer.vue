@@ -7,36 +7,48 @@
                 </q-item-section>
                 <q-item-section :class="{ 'dark-text': isDark }">Home</q-item-section>
             </q-item>
+
             <q-item clickable v-ripple @click="navigateTo('chart')">
                 <q-item-section avatar>
                     <q-icon :color="isDark ? 'white' : 'black'" name="info" />
                 </q-item-section>
                 <q-item-section :class="{ 'dark-text': isDark }">Echart</q-item-section>
             </q-item>
+
             <q-item clickable v-ripple @click="navigateTo('swiper')">
                 <q-item-section avatar>
                     <q-icon :color="isDark ? 'white' : 'black'" name="image" />
                 </q-item-section>
                 <q-item-section :class="{ 'dark-text': isDark }">Swiper</q-item-section>
             </q-item>
+
             <q-item clickable v-ripple @click="navigateTo('product')">
                 <q-item-section avatar>
                     <q-icon :color="isDark ? 'white' : 'black'" name="mail" />
                 </q-item-section>
                 <q-item-section :class="{ 'dark-text': isDark }">Product</q-item-section>
             </q-item>
+
             <q-item clickable v-ripple @click="navigateTo('bg')">
                 <q-item-section avatar>
                     <q-icon :color="isDark ? 'white' : 'black'" name="image" />
                 </q-item-section>
                 <q-item-section :class="{ 'dark-text': isDark }">BG</q-item-section>
             </q-item>
+
+            <q-item clickable v-ripple @click="navigateTo('q-expansion')">
+                <q-item-section avatar>
+                    <q-icon :color="isDark ? 'white' : 'black'" name="image" />
+                </q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">q-expansion</q-item-section>
+            </q-item>
             <q-separator inset /><!-- 線可加 -->
-            <q-item clickable v-ripple @click="navigateTo('qcard')">
+
+            <q-item clickable v-ripple @click="navigateTo('extest01')">
                 <q-item-section avatar>
                     <q-icon :color="isDark ? 'white' : 'black'" name="card_giftcard" />
                 </q-item-section>
-                <q-item-section :class="{ 'dark-text': isDark }">Qcard</q-item-section>
+                <q-item-section :class="{ 'dark-text': isDark }">Extest01</q-item-section>
             </q-item>
             <q-separator /><!-- 線可加inset -->
             <q-item clickable v-ripple @click="handleLogout">
