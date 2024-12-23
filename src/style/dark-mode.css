@@ -1,0 +1,55 @@
+body.body--dark {
+  --q-primary: #9c27b0;
+  --q-secondary: #ba68c8;
+  --q-accent: #e1bee7;
+  --q-dark: #121212;
+  --q-dark-page: #1d1d1d;
+  --q-positive: #21ba45;
+  --q-negative: #c10015;
+  --q-info: #31ccec;
+  --q-warning: #f2c037;
+}
+body.body--dark .q-btn--primary {
+  background: #9c27b0;
+}
+body.body--dark .q-btn--primary:hover {
+  background: #7b1fa2;
+}
+body.body--dark .q-btn--secondary {
+  background: #ba68c8;
+}
+body.body--dark .q-btn--secondary:hover {
+  background: #ab47bc;
+}
+body.body--dark .q-btn--accent {
+  background: #e1bee7;
+  color: #121212;
+}
+body.body--dark .q-btn--accent:hover {
+  background: #ce93d8;
+}
+body.body--dark .q-btn--success {
+  background: #4caf50;
+}
+body.body--dark .q-btn--success:hover {
+  background: #388e3c;
+}
+body.body--dark .q-btn--error {
+  background: #f44336;
+}
+body.body--dark .q-btn--error:hover {
+  background: #d32f2f;
+}
+body.body--dark .q-btn--standard {
+  background: #424242;
+  color: #ffffff;
+}
+body.body--dark .q-btn--standard:hover {
+  background: #616161;
+}
+body.body--dark .q-btn--flat, body.body--dark .q-btn--outline {
+  color: #e1bee7;
+}
+body.body--dark .q-btn--flat:hover, body.body--dark .q-btn--outline:hover {
+  background: rgba(225, 190, 231, 0.12);
+}/*# sourceMappingURL=dark-mode.css.map */
