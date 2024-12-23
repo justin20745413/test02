@@ -1,0 +1,30 @@
+name: Deploy to GitHub Pages
+
+on:
+    push:
+        branches:
+            - main # 當推動到主分支時觸發
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: 检出代码
+              uses: actions/checkout@v3
+
+            - name: 设置 Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+
+            - name: 安装依赖并构建项目
+              run: |
+                  npm install
+                  npm run build
+
+            - name: 部署到 GitHub Pages
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  branch: gh-pages # 部署到的分支
+                  folder: build # 構建輸出文件夾
